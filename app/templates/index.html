@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Imglee" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://localhost:5000" />
+  <meta property="og:image" content="https://pbs.twimg.com/profile_images/1364633178128994304/yM-RJE7U_400x400.jpg" />
+  <meta property="og:description" content="Tim's site built with the flask webframework and lots of duct tape." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>
+    {% if title %}{{ title }}{% else %}Welcome to Imglee{% endif %}
+  </title>
+</head>
+
+<body>
+  {% include "_navbar.html" %}
+
+  {% block body %}{% endblock %}
+
+  <form class="box" action="" method="post">
+    {{ form.hidden_tag() }}
+    <div class="field has-addons">
+      <div class="control">
+        {{ form.query(size=32, class_="input", placeholder="Find an image") }}
+      </div>
+      <div class="control">
+        {{ form.submit(class_="button is-primary") }}
+      </div>
+    </div>
+  </form>
+
+  <div class="photo-grid">
+
+  </div>
+
+
+  {% include "_footer.html" %}
+
+  <!-- VUE JS development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</body>
+
+</html>
