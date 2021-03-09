@@ -36,7 +36,7 @@ def download(url):
         }],
         'logger': MyLogger(),
         'progress_hooks': [my_hook],
-        'outtmpl': app.config['UPLOADS_FOLDER'] + '/%(title)s-%(id)s.%(ext)s',
+        'outtmpl': app.config['UPLOAD_FOLDER'] + '/%(title)s-%(id)s.%(ext)s',
     }
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
