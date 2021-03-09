@@ -1,5 +1,5 @@
+from app import app
 import youtube_dl
-from time import sleep
 
 class MyLogger(object):
     def debug(self, msg):
@@ -36,7 +36,7 @@ def download(url):
         }],
         'logger': MyLogger(),
         'progress_hooks': [my_hook],
-        'outtmpl': 'uploads/' + '%(title)s-%(id)s.%(ext)s',
+        'outtmpl': app.config['UPLOADS_FOLDER'] + '/%(title)s-%(id)s.%(ext)s',
     }
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
