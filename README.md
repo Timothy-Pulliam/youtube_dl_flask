@@ -7,6 +7,7 @@ youtube_dl web app built on flask
 git clone git@github.com:Timothy-Pulliam/youtube_dl_flask.git
 cd youtube_dl_flask
 python3 -m venv venv
+. venv/bin/activate
 pip install -r requirements.txt
 flask run
 ```
