@@ -36,7 +36,7 @@ def download(url):
         }],
         'logger': MyLogger(),
         'progress_hooks': [my_hook],
-        'outtmpl': app.config['UPLOAD_FOLDER'] + '/%(title)s-%(id)s.%(ext)s',
+        'outtmpl': app.config['UPLOAD_FOLDER'] + '/%(id)s.%(ext)s',
     }
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
@@ -44,7 +44,7 @@ def download(url):
     title = info['title']
     id = info['id']
     ext = info['ext']
-    return title + '-' + id + '.mp3'
+    return id + '.mp3'
 
 if __name__ == '__main__':
     url = "https://www.youtube.com/watch?v=VN5kzHnqOCE"
